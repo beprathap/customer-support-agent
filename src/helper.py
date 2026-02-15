@@ -35,3 +35,5 @@ def create_embeddings(df: pd.DataFrame, column_name: str, model: str) -> np.ndar
     print("FAISS index is created and vectors are added to the index.")
 
     return index
+
+def semantic_similarity(query: str, index: faiss.Index, model: str, k: int = 3) -> Tuple[np.ndarray, np.ndarray]:
