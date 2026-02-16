@@ -37,3 +37,17 @@ def create_embeddings(df: pd.DataFrame, column_name: str, model: str) -> np.ndar
     return index
 
 def semantic_similarity(query: str, index: faiss.Index, model: str, k: int = 3) -> Tuple[np.ndarray, np.ndarray]:
+    """
+    Calculates the semantic similarity between a query and a set of indexed vectors.
+
+    Args:
+        query (str): The query string.
+        index (faiss.Index): The FAISS index used for searching.
+        model (str): The name of the OpenAI embedding model used to create embedding.
+        k (int, optional): The number of most similar vectors to retrieve. Defaults to 3.
+
+    Returns:
+        tuple: A tuple containing two arrays - D and I.
+            - D (numpy.ndarray): The distances between the query vector and the indexed vectors.
+            - I (numpy.ndarray): The indices of the most similar vectors in the index.
+    """
