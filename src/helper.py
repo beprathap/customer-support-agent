@@ -51,3 +51,11 @@ def semantic_similarity(query: str, index: faiss.Index, model: str, k: int = 3) 
             - D (numpy.ndarray): The distances between the query vector and the indexed vectors.
             - I (numpy.ndarray): The indices of the most similar vectors in the index.
     """
+    model = OpenAIEmbeddings(openai_api_key=API_KEY, model=model)
+    #embed the query
+    query_vector = model.embed_query(query)
+    query_vector = np.array([query_vector]).astype('float32')
+    #search the FAISS index
+    D, I = index.search(query_vector, k)
+    
+    return D, I
