@@ -77,3 +77,6 @@ def semantic_similarity(query: str, index: faiss.Index, model: str, k: int = 3) 
     D, I = index.search(query_vector, k)
     
     return D, I
+
+def call_llm(query: str, responses: List[str]) -> str:
+    pass
