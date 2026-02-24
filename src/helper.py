@@ -79,4 +79,15 @@ def semantic_similarity(query: str, index: faiss.Index, model: str, k: int = 3) 
     return D, I
 
 def call_llm(query: str, responses: List[str]) -> str:
-    pass
+    """
+    Calls the Language Model to generate a response based on the given query and list of responses.
+
+    Args:
+        query (str): The customer query.
+        responses (List[str]): A list of example responses from the internal database.
+
+    Returns:
+        str: The generated response from the Language Model.
+    """
+    #assuming your KEY is saved in your environment variable as described in the Readme
+    client = OpenAI(api_key=API_KEY)
